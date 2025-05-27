@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSS Selector with Email Verification</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f9fafd;
+            margin: 2rem;
+            color: #333;
+        }
+        .parent {
+            background: #4a90e2;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            max-width: 400px;
+            box-shadow: 0 4px 8px rgb(74 144 226 / 0.3);
+            margin-bottom: 2rem;
+        }
+        di {
+            display: block;
+            margin-bottom: 2rem;
+            max-width: 400px;
+            border-left: 4px solid #4a90e2;
+            padding-left: 1rem;
+            font-size: 1.1rem;
+        }
+        dt {
+            font-weight: 700;
+            margin-top: 0.5rem;
+        }
+        dd {
+            margin: 0 0 0.75rem 0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 3rem;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 0.75rem 1rem;
+            text-align: left;
+        }
+        th {
+            background-color: #4a90e2;
+            color: white;
+        }
+        form {
+            max-width: 400px;
+            background: white;
+            padding: 1.5rem 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #4a90e2;
+        }
+        input[type="email"] {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            font-size: 1rem;
+            border: 1.5px solid #ccc;
+            border-radius: 0.4rem;
+            transition: border-color 0.3s ease;
+        }
+        input[type="email"]:focus {
+            border-color: #4a90e2;
+            outline: none;
+            box-shadow: 0 0 6px #4a90e2aa;
+        }
+        button {
+            margin-top: 1rem;
+            background-color: #4a90e2;
+            border: none;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 0.4rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #357ABD;
+        }
+        .message {
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+        .error {
+            color: #e94e4e;
+        }
+        .success {
+            color: #4caf50;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <h3>ABLAN, Angelbert James F..</h3>
+        <br />
+    </div>
+&nbsp;
+&nbsp;
+
+    <di>
+        <dt>Angelbert James</dt>
+        <dd>Ablan</dd>
+&nbsp;
+&nbsp;
+
+        <dt>22</dt>
+        <dd>Sta. Cruz</dd>
+&nbsp;
+&nbsp;
+
+        <dt>BSCS</dt>
+        <dd>Software Engineer</dd>
+    </di>
+&nbsp;
+&nbsp;
+
+    <table>
+        <tr>
+            <th>Ablan</th>
+            <th>22</th>
+            <th>Single</th>
+        </tr>
+&nbsp;
+&nbsp;
+
+        <tr>
+            <td>Angelbert James F. Ablan</td>
+            <td>22</td>
+            <td>Software Engineer</td>
+        </tr>
+    </table>
+&nbsp;
+&nbsp;
+
+    <form id="emailForm" novalidate>
+        <label for="email">Enter your email for verification:</label>
+        <input type="email" id="email" name="email" placeholder="your.email@example.com" required />
+        <button type="submit">Verify Email</button>
+        <div id="message" class="message"></div>
+    </form>
+&nbsp;
+&nbsp;
+
+    <script>
+        const form = document.getElementById('emailForm');
+        const emailInput = document.getElementById('email');
+        const messageDiv = document.getElementById('message');
+&nbsp;
+&nbsp;
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const emailValue = emailInput.value.trim();
+&nbsp;
+&nbsp;
+
+            // Simple email regex for validation
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+&nbsp;
+&nbsp;
+
+            if (!emailValue) {
+                messageDiv.textContent = "Email is required.";
+                messageDiv.className = "message error";
+                emailInput.focus();
+                return;
+            }
+&nbsp;
+&nbsp;
+
+            if (!emailRegex.test(emailValue)) {
+                messageDiv.textContent = "Please enter a valid email address.";
+                messageDiv.className = "message error";
+                emailInput.focus();
+                return;
+            }
+&nbsp;
+&nbsp;
+
+            
